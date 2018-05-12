@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 id="movie_title">{{details.title}}</h1><span></span>
+        </div>
+        <hr>
+    </div>
+    <div class="row" id="poster_row">
+        <div class="col-lg-4">
+            <img class="image-fluid post" ng-src="http://image.tmdb.org/t/p/w185/{{details.poster_path}}">
+        </div>
+        <div class="col-lg-8" >
+            <h3>{{details.release_date | limitTo:4}}</h3>
+            <span id="genres" ng-repeat="det in details.genres">
+                {{det.name}},
+            </span>
+            <h3>Overview</h3>
+            <h4>{{details.overview}}</h4>
+            <br><br><br><br>
+            <i class="fab fa-imdb icon_imdb" ng-show="moreInfo.imdbRating"></i><span class="rating">{{moreInfo.imdbRating}}</span><span id="rotten" ng-show="moreInfo.Ratings[1].Value"><img src="https://png.icons8.com/color/50/000000/rotten-tomatoes.png"></span><span class="rating">{{moreInfo.Ratings[1].Value}}</span>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-lg-4">
+            <h3>Director</h3>
+            <h4 id="act">{{moreInfo.Director}}</h4>
+        </div>
+        <div class="col-lg-4">
+                <h3>Writer</h3>
+                <h4 id="act">{{moreInfo.Writer}}</h4>
+             </div>
+        <div class="col-lg-4">
+            <h3>Actors</h3>
+            <h4 id="act">{{moreInfo.Actors}}</h4>
+         </div>
+    </div>
+    
+    <div class="row">
+            <div class="col-lg-12">
+                <h3>Screenshots</h3>
+            </div>
+    </div>
+    <hr>
+    <div  ng-controller="galleryCntr">
+        <div class="row gallery">
+                <div class="col-lg-4" class="screen_shots" ng-repeat="image in img | limitTo:3">
+                    <img ng-src="http://image.tmdb.org/t/p/w185/{{image.file_path}}">
+                </div>
+        </div>
+        <div class="row gallery" id="video_row">
+                <div class="col-lg-12">
+                    <object id="video" data="https://www.youtube.com/embed/{{url}}"></object>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Details</h3>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table  table-striped text-center" >
+            <tbody>
+                <tr>
+                    <td>Country</td>
+                    <td>{{moreInfo.Country}}</td>
+                </tr>
+                <tr>
+                    <td>Language</td>
+                    <td>{{moreInfo.Language}}</td>
+                </tr>
+                <tr>
+                    <td>Production</td>
+                    <td>{{moreInfo.Production}}</td>
+                </tr>
+                <tr>
+                    <td>BoxOffice</td>
+                    <td>{{moreInfo.BoxOffice}}</td>
+                </tr>
+                <tr>
+                    <td>Released</td>
+                    <td>{{moreInfo.Released}}</td>
+                </tr>
+                <tr>
+                    <td>Runtime</td>
+                    <td>{{moreInfo.Runtime}}</td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><a ng-href="{{moreInfo.Website}}" target="_blank">{{moreInfo.Website}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-controller="detCntr">
+        <div class="row">
+            <div class="col-lg-12" ng-show="arr[0]">
+                    <h3>Reviews</h3>
+            </div>   
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6 pallet"  ng-repeat="review in arr">
+                <p id="review_content">{{review.content}}</p>
+                <small id="author_name">By : {{review.author}}</small>
+            </div>
+        </div>
+        <h3>Similar Movies</h3>
+                <hr>
+        <div ng-controller="similarCntr" class="similar" >
+        <div  class="row" ng-repeat="movie in similarMovies_info | limitTo:2">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"  ng-repeat="mov in movie">
+                            <div class="card" >
+                                <div class="card-header" style="height:auto;">
+                                    <img class="img-fluid card-image" src=" http://image.tmdb.org/t/p/w185/{{mov.poster}}">
+                                </div>
+                                <div class="card-body">
+                                    <h5>{{mov.title}}</h5>
+                                </div>
+                                <div class="card-footer">
+                                    <a ng-href="#!/details/{{mov._id}}" id="det_but" ng-click="scroll()">View Deatils</a>
+                                </div>
+                            </div>
+                            <br><br>
+                    </div>         
+        </div>
+        
+        </div>
+    </div>
+</div>

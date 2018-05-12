@@ -1,0 +1,44 @@
+<div class="container">
+    <h2 id="he">Now Playing</h2>
+    <hr>
+    <div class="row" ng-repeat="movie in movies_info">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="mov in movie" style="padding: 0 20px;">
+            <div class="card" >
+                    <div class="card-header" style="height:auto;">
+                        <img class="img-fluid card-image" src=" http://image.tmdb.org/t/p/w185/{{mov.poster}}">
+                    </div>
+                    <div class="card-body">
+                        <h5>{{mov.title}}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a ng-href="#!/details/{{mov._id}}" id="det_but" ng-click="scroll()">View Deatils</a>
+                    </div>
+                </div>
+                <br>
+                </div>
+    </div>
+    <hr>
+    <br><br>
+    <h2 id="he">Upcoming</h2>
+    <hr>
+    <div ng-controller="upCntr">
+    <div class="row" ng-repeat="movie in movies_info">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="mov in movie" style="padding: 0 20px;">
+                <div class="card" >
+                        <div class="card-header" style="height:auto;">
+                            <img class="img-fluid card-image" src=" http://image.tmdb.org/t/p/w185/{{mov.poster}}">
+                        </div>
+                        <div class="card-body">
+                            <h5>{{mov.title}}</h5>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    </div>
+        </div>
+        </div>
+        <hr>
+    
+    
+
+</div>

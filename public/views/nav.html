@@ -1,0 +1,16 @@
+   <div>
+        <h1><a data-ng-href="#!/home" id="main_heading">Movie Fever</a></h1>
+    </div>
+    <div class="form">
+        <form name="myForm">
+            <input type="text" id="navInput" ng-required="true" ng-model="title" name="myInput" ng-change="getmovie(title)" placeholder="Search with Title">
+            <a type="button" ng-click="goto(title)">Search</a>
+        </form>
+    </div>
+        <ul>
+            <a ng-href="#!/home"><li>Home</li></a>
+            <a ng-href="#!/latest/1"><li>Advance Search</li></a>
+        </ul>
+            <ul class="suggestions" ng-show="title.length">
+                <li ng-repeat="x in all | limitTo:4"><a ng-click="clicked(title)" ng-href="#!/details/{{x.id}}"><img class="image-fluid sug_img" width="30%" height="120%" src="http://image.tmdb.org/t/p/w185/{{x.poster_path}}"><span id="heading_title">{{x.title}}</span></a></li>
+            </ul>
